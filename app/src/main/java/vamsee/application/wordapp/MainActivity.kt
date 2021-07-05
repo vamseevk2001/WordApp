@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), OnClick {
 
-    lateinit var  mAdapter: LetterAdapter
+    lateinit var mAdapter: LetterAdapter
     private var isLinearLayout = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,19 +26,18 @@ class MainActivity : AppCompatActivity(), OnClick {
         this.startActivity(intent)
     }
 
-    private fun chooseLayout(){
-        if(isLinearLayout){
+    private fun chooseLayout() {
+        if (isLinearLayout) {
             letters.layoutManager = LinearLayoutManager(this)
-        }
-        else{
+        } else {
             letters.layoutManager = GridLayoutManager(this, 4)
         }
         mAdapter = LetterAdapter(this)
         letters.adapter = mAdapter
     }
 
-    private fun setIcon(menuItem: MenuItem?){
-        if(menuItem == null) return;
+    private fun setIcon(menuItem: MenuItem?) {
+        if (menuItem == null) return;
         menuItem.icon = if (isLinearLayout)
             ContextCompat.getDrawable(this, R.drawable.ic_baseline_grid_on_24)
         else
@@ -54,14 +53,14 @@ class MainActivity : AppCompatActivity(), OnClick {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId){
-            R.id.switch_layout ->{
+        return when (item.itemId) {
+            R.id.switch_layout -> {
                 isLinearLayout = !isLinearLayout
                 chooseLayout()
                 setIcon(item)
                 return true
             }
-            else ->  super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

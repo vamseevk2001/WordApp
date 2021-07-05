@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 
-class WordAdapter(private val letter: Char, context: Context, private val listener: OnItemClick): RecyclerView.Adapter<WordsViewHolder>() {
+class WordAdapter(private val letter: Char, context: Context, private val listener: OnItemClick) :
+    RecyclerView.Adapter<WordsViewHolder>() {
 
     private var filteredWordList: List<String> = listOf("vamsee", "krishna", "vamseevk2001")
 
 
-    init{
+    init {
         val words = context.resources.getStringArray(R.array.words).toList()
         filteredWordList = words
             .filter { it.startsWith(letter, ignoreCase = true) }
@@ -27,7 +28,7 @@ class WordAdapter(private val letter: Char, context: Context, private val listen
             .from(parent.context)
             .inflate(R.layout.item_view, parent, false)
         val viewHolder = WordsViewHolder(view)
-        view.setOnClickListener{
+        view.setOnClickListener {
             listener.onWordClick(filteredWordList[viewHolder.adapterPosition])
         }
         return viewHolder
@@ -44,10 +45,10 @@ class WordAdapter(private val letter: Char, context: Context, private val listen
 
 }
 
-class WordsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+class WordsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val word: Button = itemView.findViewById<Button>(R.id.buttonItem)
 }
 
-interface OnItemClick{
+interface OnItemClick {
     fun onWordClick(word: String)
 }

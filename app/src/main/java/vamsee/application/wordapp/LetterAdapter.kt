@@ -6,16 +6,16 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 
-class LetterAdapter(private val listener: OnClick): RecyclerView.Adapter<LetterViewHolder>() {
+class LetterAdapter(private val listener: OnClick) : RecyclerView.Adapter<LetterViewHolder>() {
 
     val list = ('A').rangeTo('Z').toList()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LetterViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_view, parent, false)
         val viewHolder = LetterViewHolder(view)
-        view.setOnClickListener{
+        view.setOnClickListener {
             listener.onLetterClick(list[viewHolder.adapterPosition])
         }
-        
+
         return viewHolder
     }
 
@@ -29,10 +29,10 @@ class LetterAdapter(private val listener: OnClick): RecyclerView.Adapter<LetterV
     }
 }
 
-class LetterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+class LetterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val letters = itemView.findViewById<Button>(R.id.buttonItem)
 }
 
-interface OnClick{
+interface OnClick {
     fun onLetterClick(item: Char)
 }

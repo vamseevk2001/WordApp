@@ -10,11 +10,10 @@ import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity(), OnItemClick {
 
-    companion object{
+    companion object {
         const val LETTER = "letter"
         const val SEARCH_PREFIX = "https://www.google.com/search?q="
     }
-
 
 
     private lateinit var mAdapter: WordAdapter
