@@ -13,7 +13,7 @@ class LetterAdapter(private val listener: OnClick) : RecyclerView.Adapter<Letter
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_view, parent, false)
         val viewHolder = LetterViewHolder(view)
         view.setOnClickListener {
-            listener.onLetterClick(list[viewHolder.adapterPosition])
+            listener.onLetterClick(list[viewHolder.adapterPosition], view)
         }
 
         return viewHolder
@@ -34,5 +34,5 @@ class LetterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 }
 
 interface OnClick {
-    fun onLetterClick(item: Char)
+    fun onLetterClick(item: Char, view: View)
 }

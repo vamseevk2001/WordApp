@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 
-class WordAdapter(private val letter: Char, context: Context, private val listener: OnItemClick) :
+class WordAdapter(private val letter: String, context: Context, private val listener: OnItemClick) :
     RecyclerView.Adapter<WordsViewHolder>() {
 
-    private var filteredWordList: List<String> = listOf("vamsee", "krishna", "vamseevk2001")
+    private var filteredWordList: List<String>
 
 
     init {
